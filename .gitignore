@@ -1,0 +1,43 @@
+# 依赖与构建产物
+node_modules/
+dist/
+*.tsbuildinfo
+
+# 环境变量（含密钥，禁止提交）；保留模板
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Vite 依赖缓存（本沙箱会生成 .vite_bak / .vite_rename2 等临时副本）
+.vite
+.vite_bak
+.vite_rename2
+
+# 日志
+*.log
+npm-debug.log*
+
+# 操作系统 / 编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# 资料归档产物（用户上传文件 + SQLite 库，禁止提交）
+uploads/
+data/
+
+# 本地临时/清理备份（非源码）
+_trash_*/
+_trash_bak/
+_trash_smoke/
+backup_*/
+dist_bak_*/
+# vite 临时时间戳文件
+*.timestamp-*.mjs
+# 测试用隔离数据目录与临时脚本
+data_*/
+uploads_*/
+_smoke*
