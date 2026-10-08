@@ -1,0 +1,36 @@
+# Render Blueprint —— 教研工作台全栈部署（Node 后端 + SQLite + 前端单文件）
+# 使用方式：Render Dashboard → New → Blueprint → 关联本仓库，Render 会自动读取本文件。
+#
+# 为什么是全栈而不是静态托管：
+#   本项目含 Express 后端（/api/*）、SQLite 资料库与服务端文件归档，
+#   纯静态托管无法提供上传落盘、资料库读取与 AI 分析，必须跑 Node 进程。
+services:
+  - type: web
+    name: teacher-workbench
+    runtime: node
+    plan: free                # 免费层：7×24 在线（无访问约 15 分钟休眠，访问自动唤醒）
+    region: singapore         # 新加坡，国内访问延迟较低
+    branch: master
+    buildCommand: npm install && npm run build
+    startCommand: npm start   # = node --env-file-if-exists=.env server.js，读 process.env.PORT
+    healthCheckPath: /health  # 健康检查：由 server.js 提供，返回模型配置状态
+    autoDeploy: true          # 推送到 master 后自动重新构建发布
+    envVars:
+      # Node 版本：better-sqlite3 为原生模块，固定 20 以命中预编译包
+      - key: NODE_VERSION
+        value: "20"
+      # AI 密钥：必须手动填（sync:false 表示不写入仓库，需在 Render 后台 Environment 填值）
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_MODEL
+        value: glm-4-flash
+      - key: AI_API_BASE
+        value: https://open.bigmodel.cn/api/paas/v4
+      # 数据目录：免费层实例磁盘为临时盘（重新部署会清空）。
+      # 升级到 Starter 并挂载 Render Disk 后，可把下面两项改为挂载路径以持久化：
+      #   TWB_DATA_DIR    = /var/data/data
+      #   TWB_UPLOADS_DIR = /var/data/uploads
+      - key: TWB_DATA_DIR
+        value: data
+      - key: TWB_UPLOADS_DIR
+        value: uploads
