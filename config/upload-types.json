@@ -1,0 +1,20 @@
+{
+  "strictMime": false,
+  "maxFileMB": 500,
+  "types": [
+    { "ext": "pdf", "label": "PDF", "group": "文档", "mimes": ["application/pdf"], "enabled": true },
+    { "ext": "doc", "label": "Word", "group": "文档", "mimes": ["application/msword"], "enabled": true },
+    { "ext": "docx", "label": "Word", "group": "文档", "mimes": ["application/vnd.openxmlformats-officedocument.wordprocessingml.document"], "enabled": true },
+    { "ext": "xls", "label": "Excel", "group": "表格", "mimes": ["application/vnd.ms-excel"], "enabled": true },
+    { "ext": "xlsx", "label": "Excel", "group": "表格", "mimes": ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"], "enabled": true },
+    { "ext": "ppt", "label": "PPT", "group": "演示", "mimes": ["application/vnd.ms-powerpoint"], "enabled": true },
+    { "ext": "pptx", "label": "PPT", "group": "演示", "mimes": ["application/vnd.openxmlformats-officedocument.presentationml.presentation"], "enabled": true },
+    { "ext": "txt", "label": "文本", "group": "文档", "mimes": ["text/plain"], "enabled": true },
+    { "ext": "png", "label": "图片", "group": "图片", "mimes": ["image/png"], "enabled": true },
+    { "ext": "jpg", "label": "图片", "group": "图片", "mimes": ["image/jpeg"], "enabled": true },
+    { "ext": "jpeg", "label": "图片", "group": "图片", "mimes": ["image/jpeg"], "enabled": true },
+    { "ext": "gif", "label": "图片", "group": "图片", "mimes": ["image/gif"], "enabled": true },
+    { "ext": "mp4", "label": "视频", "group": "视频", "mimes": ["video/mp4"], "enabled": true },
+    { "ext": "zip", "label": "压缩包", "group": "压缩包", "mimes": ["application/zip", "application/x-zip-compressed", "application/octet-stream"], "enabled": true }
+  ]
+}
